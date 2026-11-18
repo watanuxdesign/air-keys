@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fun and Play Keys</title>
+<title>Fun n Play</title>
 <meta name="description" content="A camera-controlled piano and synth. Point, pinch and play — right in your browser.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -233,7 +233,7 @@ body.reduce .key{transition-duration:.05s}
 
 <!-- Top bar -->
 <header id="topbar" class="glass">
-  <div class="brand"><div class="logo"></div><h1>Fun and Play Keys</h1></div>
+  <div class="brand"><div class="logo"></div><h1>Fun n Play</h1></div>
   <div class="seg" role="tablist" aria-label="Instrument">
     <button data-inst="piano" class="active">Piano</button>
     <button data-inst="synth">Synth</button>
@@ -1316,8 +1316,8 @@ const steps=n=>`<div class="steps">${[0,1,2,3].map(i=>`<i class="${i<=n?'on':''}
 let obStep=null, obTarget=null;
 function onboard(step=0,err=''){
   obStep=step;
-  if(step===0) overlay(`<div class="card glass">${steps(0)}<h2>Play music with your hands</h2><p>Fun and Play Keys turns your webcam into a piano. Point at a key, pinch your fingers, and it plays. No musical experience needed.</p><div class="actions"><button class="btn primary" id="ob1">Let’s start</button></div></div>`), $('#ob1').onclick=async()=>{ await ensureAudio(); onboard(1); };
-  if(step===1) overlay(`<div class="card glass">${steps(1)}<h2>Turn on your camera</h2><p>Fun and Play Keys watches your hands to know which key you’re playing. <b>Your video stays on this device</b> — nothing is recorded or uploaded.</p>${err?`<p class="err">${err}</p>`:''}<div class="actions"><button class="btn primary" id="ob2">Turn on camera</button><button class="btn" id="obSkip">Use mouse & keyboard instead</button></div></div>`),
+  if(step===0) overlay(`<div class="card glass">${steps(0)}<h2>Play music with your hands</h2><p>Fun n Play turns your webcam into a piano. Point at a key, pinch your fingers, and it plays. No musical experience needed.</p><div class="actions"><button class="btn primary" id="ob1">Let’s start</button></div></div>`), $('#ob1').onclick=async()=>{ await ensureAudio(); onboard(1); };
+  if(step===1) overlay(`<div class="card glass">${steps(1)}<h2>Turn on your camera</h2><p>Fun n Play watches your hands to know which key you’re playing. <b>Your video stays on this device</b> — nothing is recorded or uploaded.</p>${err?`<p class="err">${err}</p>`:''}<div class="actions"><button class="btn primary" id="ob2">Turn on camera</button><button class="btn" id="obSkip">Use mouse & keyboard instead</button></div></div>`),
     $('#ob2').onclick=async()=>{ $('#ob2').textContent='Starting…'; try{ await startCamera(); onboard(2); }catch(e){ onboard(1,camError(e)); } },
     $('#obSkip').onclick=()=>{ finishOnboard(); toast('Click or tap the keys, or use A S D F… on your keyboard',4000); };
   if(step===2) overlay(`<div class="card glass">${steps(2)}<h2>Show your hands</h2><p>You’ll see yourself on screen with the keyboard on top. Sit about an arm’s length away with good light on your hands, and hold your hands up so your fingertips sit <b>over the keys on screen</b>, like on a real piano. Your index fingertips get a dot each. <b>Rest a dot on a key</b> — the ring fills and the note plays (or bend the finger to play instantly). Keys in the way? Settings → Keyboard position. (Keys too high or low? Settings → Keyboard height.)</p><p id="obHands" style="color:var(--text);font-weight:600">Looking for your hands…</p><div class="actions"><button class="btn primary" id="ob3" disabled style="opacity:.5">Next</button></div></div>`),
